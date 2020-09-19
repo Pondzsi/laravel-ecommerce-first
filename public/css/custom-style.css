@@ -1,0 +1,129 @@
+/* NAVBAR */
+.bg-custom-border {
+    border-bottom-left-radius: 27% 100% !important;
+    border-bottom-right-radius: 37% 100% !important;
+    background: linear-gradient(to right, #43cea2 10%, #185a9d);
+}
+
+.bg-custom {
+    background: linear-gradient(to right, #43cea2 10%, #185a9d);
+}
+
+.cart-icon {
+    height: 50px;
+    opacity: 0.5;
+}
+
+.cart-icon:hover {
+    opacity: 0.9;
+}
+
+.custom-link {
+    text-decoration: none;
+}
+
+.nav-link-custom {
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.site-name {
+    font-weight: 900;
+}
+
+.product-card {
+    text-align: center;
+}
+
+.price {
+    color: #f00202;
+    letter-spacing: 1px;
+    font-weight: 900;
+    text-shadow: 1px 0 #f00202;
+    text-align: center;
+    font-size: 1.05rem;
+    cursor: default;
+}
+
+.pagination > li > a {
+    background-color: white;
+    color: #43cea2;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    color: #43cea2;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a {
+    color: white;
+    background: linear-gradient(to right, #43cea2 45%, #185a9d);
+    border: solid 1px #43cea2;
+}
+
+.pagination > .active > a:hover {
+    background: linear-gradient(to right, #43cea2 45%, #185a9d);
+    border: solid 1px #43cea2;
+}
+
+.page-item.active .page-link {
+    background: linear-gradient(to right, #43cea2 5%, #185a9d) !important;
+    border: none !important;
+    cursor: default;
+}
+
+.search-bar {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.search-bar > .form-control {
+	border-radius: 5px !important;
+	background-color: #f8fafc;
+	border: none;
+	text-align: center;
+}
+
+/* CART */
+
+.total-custom {
+    font-weight: 900;
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    cursor: default;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.btn-cart-custom:hover {
+    background: linear-gradient(to right, #43cea2 65%, #185a9d) !important;
+}
+
+.btn-cart-custom {
+    background: linear-gradient(to right, #43cea2 5%, #185a9d) !important;
+    transition: none;
+    border: none;
+}
+
+.custom-select {
+    cursor: pointer;
+}
+
+.total-custom {
+    font-size: 1.4rem;
+    font-weight: 900;
+}
