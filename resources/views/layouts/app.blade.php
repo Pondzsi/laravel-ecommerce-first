@@ -37,12 +37,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <div class="search-bar">
-                        <input class="form-control" type="text">
-                    </div>
-
+                    @if(Request::url() === route('index') || Request::url() === route('index.search'))
+                    <form class="custom-search-form" action="{{ route('index.search') }}" method="get">
+                        @csrf
+                        <div class="input-group mb-3 search-bar">
+                            <input name="query" value="{{ $query ?? '' }}" type="text" class="form-control" placeholder="Product name">
+                            <div class="input-group-append-custom">
+                              <button class="btn btn-outline-secondary search-button" type="submit">Search</button>
+                            </div>
+                          </div>
+                    </form>
+                    @endif
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
@@ -58,25 +65,26 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a class="custom-link" href="{{ route('cart.index') }}">           
-                                    @if(\Cart::session(auth()->id())->getContent()->count())
-                                    <img src="/svg/shopping-cart.svg" class="cart-icon" /><span class="badge badge-danger">{{ \Cart::session(auth()->id())->getContent()->count() }}</span>                             
+                                <a class="custom-link" href="{{ route('cart.index') }}">
+                                    @if (\Cart::session(auth()->id())->getContent()->count())
+                                        <img src="/svg/shopping-cart.svg" class="cart-icon" /><span
+                                            class="badge badge-danger-custom">{{ \Cart::session(auth()->id())->getContent()->count() }}</span>
                                     @else
-                                    <img src="/svg/shopping-cart.svg" class="cart-icon" />
+                                        <img src="/svg/shopping-cart.svg" class="cart-icon" />
                                     @endif
                                 </a>
-                                
+
                             </li>
 
                             <li class="nav-item dropdown nav-link-custom">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -90,6 +98,18 @@
                 </div>
             </div>
         </nav>
+
+        @if (session()->has('message'))
+            <div class="alert alert-success alert-custom text-center" role="alert">
+                {{ session('message') }}
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-custom text-center" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <main class="py-4">
             @yield('content')

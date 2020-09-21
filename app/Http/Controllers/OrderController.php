@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderPlaced;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -78,9 +80,12 @@ class OrderController extends Controller
             ]);
         }
 
+
+        Mail::to($order->user->email)->send(new OrderPlaced($order));
+
         \Cart::session(auth()->id())->clear();
 
-        return view('partials.cart.order-completed');
+        return redirect()->route('index')->withMessage('Order has been placed');
 
     }
 

@@ -17,6 +17,8 @@ Auth::routes();
 
 //view
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('/search', 'IndexController@search')->name('index.search');
+
 
 //api
 Route::get('/add-to-cart/{product}', 'CartController@add')->name('cart.add')->middleware('auth');
